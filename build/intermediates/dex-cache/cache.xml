@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Android\Facebook Like FeedView\app\build\intermediates\exploded-aar\Facebook Like FeedView\library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="7e6273d8244781cfb1de7d589d3cdf342c36e7f3">
+        <dex dex="D:\Android\Facebook Like FeedView\app\build\intermediates\pre-dexed\debug\classes-100defbd98a6317b2319aa593791410fb8fe6d4d.jar" />
+    </item>
+    <item
+        jar="E:\android-sdk-windows\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="D:\Android\Facebook Like FeedView\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-f1b2b6142988ec5d67b0cb84418e5db78171b7d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\HOA\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="D:\Android\Facebook Like FeedView\app\build\intermediates\pre-dexed\debug\picasso-2.3.2-0dac012c02166c405d8b4560a1ee1937f771ff96.jar" />
+    </item>
+    <item
+        jar="C:\Users\HOA\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.16\d8f5b9114ebe0f76de7fbf55e950540959ce4ff8\library-1.0.16.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="d8f5b9114ebe0f76de7fbf55e950540959ce4ff8">
+        <dex dex="D:\Android\Facebook Like FeedView\app\build\intermediates\pre-dexed\debug\library-1.0.16-f4251c13175407d2ad9cde9c05ea50b62be4419b.jar" />
+    </item>
+
+</items>

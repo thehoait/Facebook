@@ -19,5 +19,9 @@
     <style name="FullHeightDialog" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@anim/in_animation</item>
+        <!--<item name="android:windowExitAnimation">@anim/out_animation</item>-->
+    </style>
 
 </resources>

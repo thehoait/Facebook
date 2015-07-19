@@ -51,6 +51,8 @@ public class NewsFew extends Fragment {
             }
         });
         createFooter();
+        View headerView=inflater.inflate(R.layout.new_header,null);
+        listView.addHeaderView(headerView);
         listView.setAdapter(listAdapter);
         return view;
     }

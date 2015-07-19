@@ -4,7 +4,10 @@ import info.androidhive.listviewfeed.FeedImageView;
 import info.androidhive.listviewfeed.R;
 import info.androidhive.listviewfeed.TouchImageView;
 import info.androidhive.listviewfeed.app.AppController;
+import info.androidhive.listviewfeed.data.CommentItem;
 import info.androidhive.listviewfeed.data.FeedItem;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,15 +15,23 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.squareup.picasso.Picasso;
@@ -31,6 +42,9 @@ public class FeedListAdapter extends BaseAdapter{
 	private List<FeedItem> feedItems;
 	ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 	Dialog dialog;
+	List<CommentItem> commentItems = new ArrayList<CommentItem>();
+	CommentAdapter commentAdapter;
+	private ListView dialog_ListView;
 
 	public FeedListAdapter(Activity activity, List<FeedItem> feedItems) {
 		this.activity = activity;
@@ -181,6 +195,126 @@ public class FeedListAdapter extends BaseAdapter{
 					}
 				});
 				dialog.show();
+			}
+		});
+
+		//Comment---------------------------------------------------------------------------------------------
+
+		TextView btn_comment=(TextView) convertView.findViewById(R.id.btn_comment);
+		btn_comment.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog = new Dialog(activity, R.style.FullHeightDialog);
+				dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+				dialog.setContentView(R.layout.comment_dialog);
+
+				final CommentItem itemComment = new CommentItem();
+				commentAdapter = new CommentAdapter(activity, commentItems);
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialog.setTitle("Custom Dialog");
+//                dialog.setCancelable(true);
+//                dialog.setCanceledOnTouchOutside(true);
+				//Listview trong comment
+
+				dialog_ListView = (ListView) dialog.findViewById(R.id.list);
+				itemComment.setName("Tí");
+				itemComment.setAvt(R.drawable.a2);
+				itemComment.setComment("aaaaaaaaaaa");
+				commentItems.add(itemComment);
+				dialog_ListView.setAdapter(commentAdapter);
+
+
+				dialog.show();
+				final EditText comment = (EditText) dialog.findViewById(R.id.comment);
+				final ImageView enter = (ImageView) dialog.findViewById(R.id.enter);
+				final TextView likes = (TextView) dialog.findViewById(R.id.likes);
+				final ImageView like = (ImageView) dialog.findViewById(R.id.like);
+				final ImageView liked = (ImageView) dialog.findViewById(R.id.liked);
+				final ImageView exit = (ImageView) dialog.findViewById(R.id.imageView2);
+				if (item.isLiked() == false) {
+					like.setVisibility(View.VISIBLE);
+					liked.setVisibility(View.INVISIBLE);
+					likes.setText(item.getCountLiked() + " others like it");
+				} else {
+					like.setVisibility(View.INVISIBLE);
+					liked.setVisibility(View.VISIBLE);
+					likes.setText("You and " + (item.getCountLiked()-1) + " others like it");
+				}
+
+				like.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						item.setIsLiked(true);
+						int a = item.getCountLiked();
+						item.setCountLiked(a + 1);
+						likes.setText("You and "+(item.getCountLiked()-1) +" other person liked it" );
+						like.setVisibility(View.INVISIBLE);
+						liked.setVisibility(View.VISIBLE);
+						notifyDataSetChanged();
+					}
+				});
+
+				liked.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						item.setIsLiked(false);
+						int a = item.getCountLiked();
+						item.setCountLiked(a - 1);
+						notifyDataSetChanged();
+						like.setVisibility(View.VISIBLE);
+						liked.setVisibility(View.INVISIBLE);
+						likes.setText(item.getCountLiked() + " others person liked it");
+
+					}
+				});
+
+
+				comment.addTextChangedListener(new TextWatcher() {
+					@Override
+					public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+					}
+
+					@Override
+					public void onTextChanged(CharSequence s, int start, int before, int count) {
+						String strUserName = comment.getText().toString();
+						enter.setVisibility(View.INVISIBLE);
+						if (strUserName.trim().equals("")) {
+							enter.setVisibility(View.INVISIBLE);
+						} else
+							enter.setVisibility(View.VISIBLE);
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+
+					}
+				});
+				enter.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						CommentItem itemComment = new CommentItem();
+						Toast.makeText(activity, "up", Toast.LENGTH_SHORT).show();
+
+						itemComment.setAvt(R.drawable.a1);
+						itemComment.setComment(comment.getText().toString());
+						itemComment.setName("Me");
+
+						commentItems.add(itemComment);
+
+						comment.setText("");
+						commentAdapter.notifyDataSetChanged();
+						Log.d("aaaaaaaaaaaaaaa", String.valueOf(commentItems.size()));
+					}
+				});
+				exit.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.hide();
+					}
+				});
+
 			}
 		});
 

@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/newfeedon"
         android:state_selected="true"/>
     <item android:drawable="@drawable/newfeed"/>
-</selector><!-- From: file:/home/hoa/android-studio-project/Facebook%20Like%20FeedView/app/src/main/res/drawable/first_tab.xml -->
+</selector><!-- From: file:/D:/Android/Facebook%20Like%20FeedView/app/src/main/res/drawable/first_tab.xml -->
