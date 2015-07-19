@@ -39,7 +39,7 @@ public class ProfileActivity extends Activity {
         }
         listView=(ListView) findViewById(R.id.lvProfile);
         profileAdapter=new ProfileAdapter(ProfileActivity.this,data);
-        View header=getLayoutInflater().inflate(R.layout.header_profile1,null);
+        View header=getLayoutInflater().inflate(R.layout.header_profile,null);
         listView.addHeaderView(header);
         listView.setAdapter(profileAdapter);
     }

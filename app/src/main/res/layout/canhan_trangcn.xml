@@ -11,14 +11,14 @@
             android:id="@+id/anhcn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_profile"
+
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tencn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hoàng Hòa"
+            android:text="Trần ChanhY"
             android:layout_toRightOf="@+id/anhcn"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"/>

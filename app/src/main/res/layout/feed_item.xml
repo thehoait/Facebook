@@ -106,7 +106,6 @@
                     android:paddingRight="35dp"
                     android:gravity="center"/>
                 <TextView
-                    android:id="@+id/btn_comment"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"

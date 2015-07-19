@@ -11,7 +11,7 @@ import java.util.List;
 
 import info.androidhive.listviewfeed.Tab.AddFriend;
 import info.androidhive.listviewfeed.Tab.NewsFew;
-import info.androidhive.listviewfeed.Tab.TabMessage;
+import info.androidhive.listviewfeed.Tab.Tab3;
 import info.androidhive.listviewfeed.Tab.Tab4;
 import info.androidhive.listviewfeed.Tab.TabMore;
 import info.androidhive.listviewfeed.data.FeedItem;
@@ -42,7 +42,7 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter  {
                 addFriend.setArguments(bundle);
                 return addFriend;
             case 2:
-                return new TabMessage();
+                return new Tab3();
             case 3:
                 return new Tab4();
             case 4:
